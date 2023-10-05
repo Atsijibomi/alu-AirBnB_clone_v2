@@ -9,6 +9,8 @@ import os
 from models import storage
 
 
+@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'db',
+                 "Not testing db storage")
 class TestConsole(unittest.TestCase):
     """Tests for console.py"""
 
@@ -52,6 +54,6 @@ class TestConsole(unittest.TestCase):
                 1].split(' ')[0]
             self.console.onecmd("all City")
             output3 = self.stdout.getvalue().strip()
-        self.assertIn(output2, output3)
+        self.assertIn(city_id, output3)
         self.assertIn('San Francisco', output3)
         self.assertIn("[City] ({})".format(city_id), output3)

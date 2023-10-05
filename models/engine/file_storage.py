@@ -62,3 +62,5 @@ class FileStorage:
             if key in self.all():
                 del self.all()[key]
             self.save()
+        else:
+            return

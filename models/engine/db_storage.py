@@ -27,6 +27,7 @@ class DBStorage:
         database = os.getenv('HBNB_MYSQL_DB')
         env = os.getenv('HBNB_ENV')
 
+        # To test locally
         # connection_url = 'mysql+pymysql://{}:{}@{}:3306/{}'.format(
         #     user, password, host, database)
         connection_url = 'mysql+mysqldb://{}:{}@{}:3306/{}'.format(

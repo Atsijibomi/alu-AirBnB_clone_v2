@@ -3,6 +3,9 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Integer, Float
 from sqlalchemy.orm import relationship
+import os
+import models
+from models.review import Review
 
 
 class Place(BaseModel, Base):
@@ -23,3 +26,16 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
     amenity_ids = []
+
+    if os.getenv("HBNB_TYPE_STORAGE") == "db":
+        reviews = relationship("Review", backref="place")
+    else:
+        @property
+        def reviews(self):
+            """Returns instances of Review where place_id equals
+            self.id.
+            """
+
+            reviews = [review for review in models.storage.all('Review').values()
+                       if review.place_id == self.id]
+            return reviews

@@ -3,7 +3,12 @@
 from sqlalchemy import create_engine
 import os
 from models.base_model import Base
-from models import State, Place, Review, User, Amenity, City
+from models.state import State
+from models.place import Place
+from models.review import Review
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 

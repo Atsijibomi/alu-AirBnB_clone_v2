@@ -32,7 +32,7 @@ class BaseModel:
                 self.updated_at = datetime.now()
 
             for key, value in kwargs.items():
-                if hasattr(self, key) and self[key] is None:
+                if hasattr(self, key) and key != "__class__":
                     setattr(self, key, value)
 
             del kwargs['__class__']

@@ -11,7 +11,8 @@ env.hosts = ['54.91.121.160', '18.208.248.34']
 
 
 def do_pack():
-    """Do pack function"""
+    """Do pack function
+    Return: Archive path if successful, None if not"""
 
     local("mkdir -p versions")
     result = local("tar -cvzf versions/web_static_{}.tgz web_static"

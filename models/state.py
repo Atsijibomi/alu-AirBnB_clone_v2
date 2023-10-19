@@ -5,6 +5,7 @@ from models.base_model import BaseModel, Base
 import os
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+from models.city import City
 
 
 class State(BaseModel, Base):
@@ -22,5 +23,5 @@ class State(BaseModel, Base):
         def cities(self):
             """ Returns the list of City instances with state_id
             equals to the current State.id. """
-            return [city for city in models.storage.all('City').values()
+            return [city for city in models.storage.all(City).values()
                     if city.state_id == self.id]
